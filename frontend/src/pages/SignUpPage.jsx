@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter";
 import { useAuthStore } from "../store/authStore";
+import toast from 'react-hot-toast';
 
 const SignUpPage = () => {
     const [name, setName] = useState('');
@@ -20,6 +21,7 @@ const SignUpPage = () => {
         try{
             await signup(email, password, name);
             navigate("/");
+            toast.success("User signed up successfully");
         } catch (error) {
             console.log(error)
         }
