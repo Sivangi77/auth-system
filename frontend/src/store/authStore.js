@@ -18,16 +18,8 @@ export const useAuthStore = create((set) => ({
             const response = await axios.post(`${API_URL}/signup`,{email,password,name});
             set({user:response.data.user, isAuthenticated: true, isLoading: false});
         } catch (error) {
-            // set({error:error.response.data.message || "Error signing up", isLoading: false});
-            // throw error;
-     console.error("Signup Error:", error);
-
-      const errMsg =
-        error?.response?.data?.message ||
-        error?.message ||
-        "Something went wrong during signup.";
-
-      set({ error: errMsg, isLoading: false });
+            set({error:error.response.data.message || "Error signing up", isLoading: false});
+            throw error;
         }
    }
 }))
