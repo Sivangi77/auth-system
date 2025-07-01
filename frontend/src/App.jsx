@@ -40,6 +40,7 @@ function App() {
           <Route path="/" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
           <Route path="/signup" element={<RedirectAthenticatedUser><SignUpPage /></RedirectAthenticatedUser>} />
           <Route path="/login" element={<RedirectAthenticatedUser><LoginPage /></RedirectAthenticatedUser>} />
+          <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </main>
       <Toaster />
